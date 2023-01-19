@@ -1,0 +1,98 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Fredoka One", cursive;
+}
+
+.section {
+  padding: 30px 50px;
+}
+
+.title {
+  margin: 0;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 35px;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 40px;
+  background: linear-gradient(
+    to right,
+    white 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0.6) 20%,
+    rgba(0, 0, 0, 0.8) 30%,
+    white 0%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6000ms infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 880px;
+  }
+  100% {
+    background-position: 880px;
+  }
+}
+
+.wrapper {
+  display: flex;
+}
+
+.info {
+  margin-left: 50px;
+  font-size: 25px;
+}
+
+.message,
+.click {
+  font-size: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.map {
+  display: block;
+  cursor: pointer;
+  border: 3px dashed black;
+}
+
+.btn,
+.btn-start {
+  cursor: pointer;
+
+  font-size: 18px;
+  font-family: inherit;
+
+  padding: 10px 15px;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  transition: color 2000ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    background-color 2000ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.btn:hover,
+.btn:focus,
+.btn-start:focus,
+.btn-start:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.footer {
+  min-width: 100%;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
+}

@@ -33,7 +33,7 @@ function getDistance(event, target) {
 
 function getMessage(distance) {
   if (distance < 50) {
-    return " It's burn!!!";
+    return " It's burning!!!";
   }
   if (distance < 100) {
     return " It's very hot!!!";

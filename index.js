@@ -3,6 +3,7 @@ const start = document.querySelector(".btn-start");
 const message = document.querySelector(".message");
 const counter = document.querySelector(".click");
 let clicks = 0;
+let color = null;
 const target = {
   x: 0,
   y: 0,
@@ -33,23 +34,30 @@ function getDistance(event, target) {
 
 function getMessage(distance) {
   if (distance < 50) {
-    return " It's burning!!!";
+    color = "red";
+    return " It's burning 🔥!!!";
   }
   if (distance < 100) {
+    color = "#FF2400";
     return " It's very hot!!!";
   }
   if (distance < 200) {
+    color = "#E32636";
     return " It's hot!";
   }
   if (distance < 500) {
+    color = "#DA727D";
     return " It's warm";
   }
   if (distance < 700) {
+    color = "#7EC2E7";
     return " It's cold";
   }
   if (distance < 850) {
+    color = "#9ACEEB";
     return " It's really cold, brr...";
   } else {
+    color = "#C2DBEB";
     return " Today is not your day";
   }
 }
@@ -62,6 +70,7 @@ function onMapClick(event) {
   const distance = getDistance(event, target);
   const messageHint = getMessage(distance);
   message.textContent = messageHint;
+  message.style.color = color;
   if (distance < 20) {
     alert("Клад найден! Сделано кликов: " + clicks);
   }

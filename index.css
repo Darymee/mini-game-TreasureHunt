@@ -22,28 +22,6 @@ body {
   overflow: hidden;
 }
 
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  opacity: 1;
-}
-
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  padding: 20px;
-  width: 300px;
-  height: 300px;
-  background-color: white;
-
-  transform: translate(-50%, -50%) scale(1) rotate(0);
-}
-
 .section {
   padding: 30px 50px;
 }
@@ -101,13 +79,21 @@ body {
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.8);
 }
 
+.timer-face {
+  font-size: 35px;
+  color: yellow;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
 .map {
   display: block;
   cursor: pointer;
   border: 3px dashed black;
 }
 
-.btn,
+.btn-rules,
 .btn-start {
   cursor: pointer;
 
@@ -123,8 +109,6 @@ body {
 }
 
 .btn:hover,
-.btn:focus,
-.btn-start:focus,
 .btn-start:hover {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
@@ -139,4 +123,71 @@ body {
   padding: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.8);
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Modal */
+
+.backdrop {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  width: 300px;
+  height: auto;
+  background-color: white;
+
+  transform: translate(-50%, -50%) scale(1) rotate(0);
+}
+
+.close-btn {
+  cursor: pointer;
+
+  display: block;
+  margin-left: auto;
+  border: none;
+  background-color: transparent;
+  transition: fill 2000ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    transform 2000ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  margin-bottom: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  fill: rgba(0, 0, 0, 0.6);
+  transform: scale(0.9);
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 32px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.rules-list {
+  padding: 0;
+  padding-left: 20px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.rules-list__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.modal-text {
+  text-align: center;
+  font-size: 25px;
+  margin: 0;
 }

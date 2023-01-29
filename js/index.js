@@ -1,17 +1,16 @@
 import { refs } from "../js/refs.js";
 import { timer, updateTimer, timeValue } from "./timer.js";
+import { onOpenModal } from "./modal.js";
 
 let clicks = 0;
 let color = null;
-let isPlaying = false;
+export let isPlaying = false;
 
 const target = {
   x: 0,
   y: 0,
 };
 
-refs.btnRules.addEventListener("click", onRulesClick);
-refs.btnClose.addEventListener("click", onCloseModal);
 refs.btnStart.addEventListener("click", gameStatusCheck);
 
 function gameStatusCheck() {
@@ -50,6 +49,7 @@ function getDistance(event, target) {
   return Math.sqrt(x * x + y * y);
 }
 
+// Change hint message
 function getMessage(distance) {
   if (distance < 50) {
     color = "red";
@@ -82,6 +82,8 @@ function getMessage(distance) {
 
 genTargetCoords(1000, 600);
 
+
+
 function onMapClick(event) {
   clicks += 1;
   refs.counter.textContent = ` ${clicks}`;
@@ -99,39 +101,8 @@ function onMapClick(event) {
   }
 }
 
-function onOpenModal(titleText, mainText, markup) {
-  refs.backdropAlert.classList.remove("is-hidden");
-  refs.body.classList.add("no-scroll");
-  refs.modalTitle.textContent = titleText;
-  refs.modalText.textContent = mainText;
 
-  refs.btnRules.setAttribute("disabled", true);
-  refs.btnStart.setAttribute("disabled", true);
-
-  if (markup) {
-    return refs.rulesList.insertAdjacentHTML("beforeend", markup);
-  }
-
-  return;
-}
-
-function onCloseModal() {
-  refs.backdropAlert.classList.add("is-hidden");
-  refs.body.classList.remove("no-scroll");
-
-  refs.btnRules.removeAttribute("disabled");
-  refs.btnStart.removeAttribute("disabled");
-
-  refs.rulesList.innerHTML = "";
-  refs.modalTitle.textContent = "";
-  refs.modalText.textContent = "";
-
-  updateTimer({ hours: "00", minutes: "00", seconds: "00" });
-
-  stopGame();
-}
-
-function stopGame() {
+export function stopGame() {
   isPlaying = false;
   timer.stop();
 
@@ -145,21 +116,3 @@ function stopGame() {
 
   return;
 }
-
-function onRulesClick() {
-  if (isPlaying) {
-    stopGame();
-  }
-  return onOpenModal("Game rules", "Good luck!", markup);
-}
-
-const rules = [
-  "You must find the treasure as soon as possible.",
-  "Look at the hints on the right, so you will quickly find the treasure.",
-  "Try to make fewer clicks.",
-  "The game will end when you find the treasure.",
-];
-
-const markup = rules
-  .map((rule) => `<li class="rules-list__item">${rule}</li>`)
-  .join("");
